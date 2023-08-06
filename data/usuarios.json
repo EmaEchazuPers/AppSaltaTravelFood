@@ -1,0 +1,15 @@
+[
+    {
+        "id_usuario" : 1101,
+        "nombre" : "Emanuel",
+        "apellido" : "Echazú",
+        "historial_rutas" : [1301,1302]
+    },
+
+    {
+        "id_usuario" : 1102,
+        "nombre" : "Juan",
+        "apellido" : "Perez",
+        "historial_rutas" : [1302]
+    }
+]

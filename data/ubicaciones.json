@@ -1,0 +1,19 @@
+[
+    {
+        "id_ubicacion" : 1,
+        "direccion" : "Av. San Martin 678",
+        "coordenadas" : [-24.79317,-65.41386]
+    },
+    
+    {
+        "id_ubicacion" : 2,
+        "direccion" : "Caseros 602",
+        "coordenadas" : [-24.78960,-65.41099]
+    },
+    
+    {
+        "id_ubicacion" : 3,
+        "direccion" : "Pje. Zorrilla 1",
+        "coordenadas" : [-24.78831,-65.40236]
+    }
+]

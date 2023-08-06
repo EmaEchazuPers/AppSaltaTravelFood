@@ -1,0 +1,40 @@
+[
+    {
+        "id_destino" : 1001,
+        "nombre" : "Mercado San Miguel",
+        "tipo_cocina" : "Regional",
+        "ingredientes" : ["tomate","choclo","aji","condimentos","carne","huevo"],
+        "precio_min" : 3000.00,
+        "precio_max" : 12000.00,
+        "popularidad" : 4.4,
+        "disponibilidad" : true,
+        "id_ubicacion" : 1,
+        "imagen" : "mercado.jpg"
+    },
+
+    {
+        "id_destino" : 1002,
+        "nombre" : "Confiteria New Time",
+        "tipo_cocina" : "Comida Rapida",
+        "ingredientes" : ["tomate","cafe","queso","jamon","carne","huevo","pan","papa"],
+        "precio_min" : 4200.00,
+        "precio_max" : 16600.00,
+        "popularidad" : 3.5,
+        "disponibilidad" : true,
+        "id_ubicacion" : 2,
+        "imagen" : "new_time.jpg"
+    },
+
+    {
+        "id_destino" : 1003,
+        "nombre" : "Trattoria Mamma Mia",
+        "tipo_cocina" : "Italiana",
+        "ingredientes" : ["salsa","pasta","carne","queso"],
+        "precio_min" : 5300.00,
+        "precio_max" : 23000.00,
+        "popularidad" : 4.1,
+        "disponibilidad" : true,
+        "id_ubicacion" : 3,
+        "imagen" : "mamma_mia.jpg"
+    }
+]

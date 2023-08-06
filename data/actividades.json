@@ -1,0 +1,36 @@
+[
+    {
+        "id_actividad" : 1501,
+        "nombre" : "Recital folclore",
+        "id_destino" : 1001,
+        "hora_inicio" : "13:00"
+    },
+
+    {
+        "id_actividad" : 1502,
+        "nombre" : "Recital Rock",
+        "id_destino" : 1002,
+        "hora_inicio" : "20:00"
+    },
+
+    {
+        "id_actividad" : 1503,
+        "nombre" : "Transmision de futbol",
+        "id_destino" : 1002,
+        "hora_inicio" : "21:00"
+    },
+
+    {
+        "id_actividad" : 1504,
+        "nombre" : "Exposicion artesanias",
+        "id_destino" : 1001,
+        "hora_inicio" : "18:00"
+    },
+
+    {
+        "id_actividad" : 1505,
+        "nombre" : "Show de StandUp",
+        "id_destino" : 1003,
+        "hora_inicio" : "22:00"
+    }
+]

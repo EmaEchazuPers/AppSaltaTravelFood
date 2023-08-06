@@ -1,0 +1,14 @@
+[
+    {
+        "id_visita" : 1301,
+        "nombre" : "Ruta amigos",
+        "destinos": [1001,1002,1003]
+    },
+    
+    {
+        "id_visita" : 1302,
+        "nombre" : "Ruta corta",
+        "destinos": [1001,1002]
+    }
+]
+

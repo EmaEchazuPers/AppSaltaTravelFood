@@ -1,0 +1,46 @@
+[
+    {
+        "id_review" : 1401,
+        "id_destino" : 1001,
+        "id_usuario" : 1101,
+        "calificacion" : 3,
+        "comentario" : "Me gusto las comidas tipicas pero habia mucha gente",
+        "animo" : "Positivo"
+    },
+
+    {
+        "id_review" : 1402,
+        "id_destino" : 1002,
+        "id_usuario" : 1101,
+        "calificacion" : 4,
+        "comentario" : "La vista de la plaza es excelente, hay comidas clasicas",
+        "animo" : "Positivo"
+    },
+
+    {
+        "id_review" : 1403,
+        "id_destino" : 1003,
+        "id_usuario" : 1101,
+        "calificacion" : 2,
+        "comentario" : "Me parecio muy caro por la comida presentada",
+        "animo" : "Negativo"
+    },
+
+    {
+        "id_review" : 1404,
+        "id_destino" : 1001,
+        "id_usuario" : 1102,
+        "calificacion" : 4,
+        "comentario" : "Increible la calidez de las personas del lugar",
+        "animo" : "Positivo"
+    },
+
+    {
+        "id_review" : 1405,
+        "id_destino" : 1002,
+        "id_usuario" : 1102,
+        "calificacion" : 2,
+        "comentario" : "No ofrecia gran variedad, buena ubicacion",
+        "animo" : "Negativo"
+    }
+]
