@@ -1,5 +1,5 @@
 import tkinter as tk
-#Trae la carpera y luego el modulo
+#Trae la carpeta y luego el modulo
 from vistas import vistaPrincipal
 from vistas import vistaDestinos
 from vistas import vistaBusqueda
@@ -39,4 +39,7 @@ class Ventana(tk.Tk):
     def mostrar_frame(self, contenedor):
         frame = self.frames[contenedor]
         frame.tkraise() #Coloca la vista seleccionada delante del resto
+    
+    def cerrar_ventana(self):
+        self.destroy()
 

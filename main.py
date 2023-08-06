@@ -1,4 +1,4 @@
-from vistas.ventana import Ventana
+from controlador.controladorVentana import Ventana
 
 
 if __name__ == '__main__':
