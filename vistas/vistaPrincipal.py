@@ -1,7 +1,6 @@
 import tkinter as tk
-from vistas import vistaDestinos
-from vistas import vistaBusqueda
-
+from vistas import vistaDestinos as Vds
+from vistas import vistaBusqueda as Vb
 
 
 class VistaPrincipal(tk.Frame):
@@ -17,10 +16,10 @@ class VistaPrincipal(tk.Frame):
         self.iniciar_widgets()
 
     def cambio_destino(self):
-        self.controlador.mostrar_frame(vistaDestinos.VistaDestinos)
+        self.controlador.mostrar_frame(Vds.VistaDestinos)
     
     def cambio_busqueda(self):
-        self.controlador.mostrar_frame(vistaBusqueda.VistaBusqueda)
+        self.controlador.mostrar_frame(Vb.VistaBusqueda)
 
     def cerrar_ventana(self):
         self.controlador.cerrar_ventana()
