@@ -12,3 +12,5 @@ class ModeloActividad:
         with open(archivo,'r') as f:
             data = json.load(f)
         return [cls(**actividad) for actividad in data]
+    
+    

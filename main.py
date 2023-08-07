@@ -1,6 +1,6 @@
-from controlador.controladorVentana import Ventana
+from controladorVentana import controladorVentana
 
 
-if __name__ == '__main__':
-    app = Ventana()
+if __name__ == '__main__':    
+    app = controladorVentana()
     app.mainloop()
