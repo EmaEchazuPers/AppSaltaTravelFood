@@ -4,7 +4,7 @@ from vistas import vistaDestinos as Vds
 
 class VistaDetalles(tk.Frame):
     def __init__(self, master, controlador):
-        #Master es: Ventana, donde estará Vista Inicio
+
         super().__init__(master)
         self.configure(background='#EEEEEE')
         self.rowconfigure(0,weight=1)
@@ -27,8 +27,7 @@ class VistaDetalles(tk.Frame):
         self.titulo.grid(row=0, column=0, columnspan=5, sticky='nsew', padx=10, pady=10)    
 
         self.listbox_destinos = tk.Listbox(self,justify='center')
-        #self.listbox_destinos.bind('<<ListboxSelect>>',seleccionar_item)
-        self.listbox_destinos.grid(row=1, column=0, columnspan=2, rowspan=3, sticky='nsew', padx=10, pady=10)
+        self.listbox_destinos.grid(row=1, column=0, columnspan=1, rowspan=3, sticky='nsew', padx=10, pady=10)
         self.listbox_destinos.insert(tk.END,self.lista_destinos)    
 
         self.listbox_actividades = tk.Listbox(self,justify='center')
@@ -43,7 +42,6 @@ class VistaDetalles(tk.Frame):
         self.btn2.grid(row=2, column=4, padx=10, pady=10, sticky='ew')
 
         self.actualizar_listbox_destinos()
-        #self.actualizar_listbox_actividades(self.id_item)
         
     #Actualiza las listbox
 
@@ -67,9 +65,10 @@ class VistaDetalles(tk.Frame):
         
         for act in actividades:
             if act.id_destino == aux_id_dest:
-                self.listbox_actividades.insert(tk.END,act.nombre)
+                self.listbox_actividades.insert(tk.END,act.nombre +' - ' + act.hora_inicio)
     
     #Obtiene el index del item de la listbox de destinos
+    
     def item_seleccionado(self):
         for i in self.listbox_destinos.curselection():
             self.id_item = i

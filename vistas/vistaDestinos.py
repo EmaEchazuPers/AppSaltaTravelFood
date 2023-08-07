@@ -1,7 +1,7 @@
 import tkinter as tk
 from vistas import vistaPrincipal as Vp
 from vistas import vistaDetalles as Vdt
-from vistas import vistaReviews as Vr
+from vistas import vistaMapa as Vm
 
 
 class VistaDestinos(tk.Frame):
@@ -25,8 +25,8 @@ class VistaDestinos(tk.Frame):
     def cambio_detalles(self):
         self.controlador.mostrar_frame(Vdt.VistaDetalles)
 
-    def cambio_review(self):
-        self.controlador.mostrar_frame(Vr.VistaReviews)
+    def cambio_mapa(self):
+        self.controlador.mostrar_frame(Vm.VistaMapa)
     
     #Posicionamiento de widgets
 
@@ -42,7 +42,7 @@ class VistaDestinos(tk.Frame):
         self.btn1 = tk.Button(self, text='Ver detalles', command=self.cambio_detalles)
         self.btn1.grid(row=1, column=2, padx=10, pady=10, sticky='ew')
 
-        self.btn2 = tk.Button(self, text='Ver reviews', command=self.cambio_review)
+        self.btn2 = tk.Button(self, text='Ver mapa', command=self.cambio_mapa)
         self.btn2.grid(row=2, column=2, padx=10, pady=10,sticky='ew')
 
         self.btn3 = tk.Button(self, text='Volver', command=self.cambio_principal)
@@ -57,6 +57,4 @@ class VistaDestinos(tk.Frame):
             self.listbox_destinos.insert(tk.END,des.nombre)
 
 
-    def cargar_destinos(destinos):
-        for des in destinos:
-            self.lista_destinos.insert(tk.END,des.nombre)
+    
