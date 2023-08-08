@@ -16,7 +16,6 @@ class ModeloReview:
         return [cls(**review) for review in data]
 
     @classmethod
-    def escribir_json(cls, dicc_datos, archivo):
-        with open(archivo,'w') as f:
-            json.dump(dicc_datos,f)
-        return cls(**datos)
+    def escribir_json(cls, dicc, archivo):
+        with open(archivo,'w+') as f:
+            json.dump(dicc,f)

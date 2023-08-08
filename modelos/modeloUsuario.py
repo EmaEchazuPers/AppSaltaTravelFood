@@ -1,4 +1,5 @@
 import json
+import controladorVentana
 
 class ModeloUsuario:
     def __init__(self,id_usuario,nombre,apellido,historial_rutas):
@@ -12,6 +13,12 @@ class ModeloUsuario:
         with open(archivo,'r') as f:
             data = json.load(f)
         return [cls(**usuario) for usuario in data]
+    
+    @classmethod
+    def escribir_json(cls, dicc, archivo):
+        with open(archivo,'w+') as f:
+            json.dump(dicc,f)
+    #   return cls(**datos)
 
 
     
