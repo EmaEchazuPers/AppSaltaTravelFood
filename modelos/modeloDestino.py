@@ -18,4 +18,6 @@ class ModeloDestino:
         with open(archivo,'r') as f:
             data = json.load(f)
         return [cls(**destino) for destino in data]
+
+    
  

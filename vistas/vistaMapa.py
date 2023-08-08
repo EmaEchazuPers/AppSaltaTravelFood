@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import tkintermapview as tkmp
 from vistas import vistaDestinos as Vds
 from vistas import vistaDetalles as Vdt
+from vistas import vistaRutaVisita as Vru
 
 
 class VistaMapa(tk.Frame):
@@ -14,6 +15,7 @@ class VistaMapa(tk.Frame):
         self.columnconfigure(0,weight=1)
         self.controlador = controlador
         self.lista_destinos = []
+        self.lista_rutas = []
         #self.lista_ubicaciones = []
         self.id_item = 0
 
@@ -23,40 +25,86 @@ class VistaMapa(tk.Frame):
 
     def cambio_destino(self):
         self.controlador.mostrar_frame(Vds.VistaDestinos)
+    
+    def cambio_visitas(self):
+        self.controlador.mostrar_frame(Vru.VistaRutaVisita)
 
     
     #Posicionamiento de widgets
 
     def iniciar_widgets(self):
-        self.titulo = tk.Label(self,text='Salta Food Travel - Mapa de destinos en Salta'
-                        ,justify='center',fg='blue', bg='black',height=10)
-        self.titulo.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=10, pady=10)        
-        self.titulo.configure(height=5)
 
-        self.listbox_destinos = tk.Listbox(self,justify='center')
-        self.listbox_destinos.grid(row=1, column=0,columnspan=1, rowspan=2, sticky='nsew', padx=10, pady=10)
+        #Frame principal
+
+        self.frame_principal = tk.Frame(self)
+        self.frame_principal.configure(background='yellow')
+        self.frame_principal.pack(side='top',fill='both',expand=True)
+
+        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel - Mapa de destinos en Salta')
+        self.titulo.pack(side='top',fill='x', padx=10, pady=10)
+
+        #Frame destinos
+
+        self.frame_destinos = tk.Frame(self.frame_principal)
+        self.frame_destinos.pack(side='left', fill='both',expand=True)
+
+        self.lbl_destinos = tk.Label(self.frame_destinos, text='Lista de destinos')
+        self.lbl_destinos.pack(side='top', fill='x', padx=10,pady=10)
+
+        self.listbox_destinos = tk.Listbox(self.frame_destinos,justify='center')
+        self.listbox_destinos.pack(side='top',fill='both',expand=True, padx=10,pady=10)
+        self.listbox_destinos.bind('<Button-1>',self.item_seleccionado)
         self.listbox_destinos.insert(tk.END,self.lista_destinos)
-        self.listbox_destinos.configure(height=20,width=5)
 
-        self.mapa_widget = tkmp.TkinterMapView(self,width=300, height=300,corner_radius=0)
-        self.mapa_widget.grid(row=1, column=1, columnspan=3, rowspan=2, sticky='nsew',padx=10, pady=10)
+        #Frame rutas
+
+        self.lbl_rutas = tk.Label(self.frame_destinos, text='Lista de rutas')
+        self.lbl_rutas.pack(side='top', fill='x', padx=10,pady=10)
+
+        self.listbox_rutas = tk.Listbox(self.frame_destinos,justify='center')
+        self.listbox_rutas.pack(side='top',fill='both',expand=True, padx=10,pady=10)
+        self.listbox_rutas.bind('<Button-1>',self.item_seleccionado_ruta)
+        self.listbox_rutas.insert(tk.END,self.lista_rutas)
+
+        #Frame mapa
+
+        self.frame_mapa = tk.Frame(self.frame_principal)
+        self.frame_mapa.pack(side='left', fill='both',expand=True)
+
+        self.lbl_mapa = tk.Label(self.frame_mapa, text='Destino en mapa')
+        self.lbl_mapa.pack(side='top', fill='x', padx=10,pady=10)
+
+        self.mapa_widget = tkmp.TkinterMapView(self.frame_mapa)
+        self.mapa_widget.pack(side='top',fill='both',expand=True, padx=10, pady=10)
         self.mapa_widget.set_position(-24.789695,-65.411059)
         self.mapa_widget.set_zoom(13)
-        #self.mapa_widget.configure(height=20, width=30)
-   
-        self.btn1 = tk.Button(self, text='Seleccionar', command=self.item_seleccionado)
-        self.btn1.grid(row=1, column=3, padx=10, pady=10, sticky='ew')
 
-        self.btn2 = tk.Button(self, text='Volver', command=self.cambio_destino)
-        self.btn2.grid(row=2, column=3, padx=10, pady=10,sticky='ew')
+        #Frame botones
+
+        self.frame_botones = tk.Frame(self.frame_principal, background='black')
+        self.frame_botones.pack(side='left',fill='both',expand=True, padx=10, pady=10)
+
+        self.btn_visitas = tk.Button(self.frame_botones, text='Ver rutas', command=self.cambio_visitas)
+        self.btn_visitas.pack(side='top',fill='x',padx=10,pady=10)
+
+        self.btn_volver = tk.Button(self.frame_botones, text='Volver', command=self.cambio_destino)
+        self.btn_volver.pack(side='top',fill='x',padx=10,pady=10)
 
         self.actualizar_listbox()
+        self.actualizar_rutas()
+        self.poner_todos_destinos()
     
     def actualizar_listbox(self):
         destinos = self.controlador.obtener_destinos()
         self.listbox_destinos.delete(0, tk.END)        
         for des in destinos:
             self.listbox_destinos.insert(tk.END,des.nombre)
+
+    def actualizar_rutas(self):
+        rutas_visitas = self.controlador.obtener_rutas_visitas()
+        self.listbox_rutas.delete(0, tk.END)        
+        for rut in rutas_visitas:
+            self.listbox_rutas.insert(tk.END,rut.nombre)
         
     
     def ubicar_en_mapa(self,id):
@@ -83,9 +131,43 @@ class VistaMapa(tk.Frame):
                 self.mapa_widget.delete_all_marker()                
                 imagen = ImageTk.PhotoImage(Image.open('assets\\'+ self.controlador.devolver_ruta_imagen(aux_id_des)).resize((100,100)))
                 self.mapa_widget.set_marker(ubi.coordenadas[0],ubi.coordenadas[1],text=aux_nombre,image=imagen)
+    
+    def ubicar_ruta(self,id):
+        rutas_visitas = self.controlador.obtener_rutas_visitas()
+        aux_id_visita = 0
+        aux_num_destinos = 0
+        match id:
+            case 0:
+                aux_id_visita = 1301
+                aux_num_destinos = 3
+            case 1:
+                aux_id_visita = 1302
+                aux_num_destinos = 2
+
+        for rut in rutas_visitas:
+            if rut.id_visita == aux_id_visita:
+                lista_coordenadas = self.controlador.obtener_coordenadas(rut.destinos)
+                self.mapa_widget.delete_all_path()
+                self.mapa_widget.delete_all_marker()
+                self.mapa_widget.set_path(lista_coordenadas)
+        self.poner_todos_destinos()
+        
         
     
-    def item_seleccionado(self):
+    def item_seleccionado(self,event):
         for i in self.listbox_destinos.curselection():
             self.id_item = i
         self.ubicar_en_mapa(self.id_item)
+
+    def item_seleccionado_ruta(self,event):
+        for i in self.listbox_rutas.curselection():
+            self.id_item = i
+        self.ubicar_ruta(self.id_item)
+
+    def poner_todos_destinos(self):
+        self.mapa_widget.delete_all_marker() 
+        for id_des in (1001,1002,1003):
+            for ubi in self.controlador.obtener_ubicaciones():
+                if ubi.id_ubicacion == id_des-1000:
+                    imagen = ImageTk.PhotoImage(Image.open('assets\\'+ self.controlador.devolver_ruta_imagen(id_des)).resize((100,100)))
+                    self.mapa_widget.set_marker(ubi.coordenadas[0],ubi.coordenadas[1],image=imagen)
