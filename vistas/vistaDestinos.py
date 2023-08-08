@@ -2,6 +2,7 @@ import tkinter as tk
 from vistas import vistaPrincipal as Vp
 from vistas import vistaDetalles as Vdt
 from vistas import vistaMapa as Vm
+from vistas import vistaReview as Vre
 
 
 
@@ -28,9 +29,11 @@ class VistaDestinos(tk.Frame):
     def cambio_detalles(self):
         self.controlador.mostrar_frame(Vdt.VistaDetalles)
         
-
     def cambio_mapa(self):
         self.controlador.mostrar_frame(Vm.VistaMapa)
+    
+    def cambio_review(self):
+        self.controlador.mostrar_frame(Vre.VistaReview)
     
     #Posicionamiento de widgets
 
@@ -71,10 +74,13 @@ class VistaDestinos(tk.Frame):
         self.btn_review = tk.Button(self.frame_botones, text='Ver review', command=self.item_seleccionado)
         self.btn_review.pack(side='top',fill='x',padx=10,pady=10)
 
+        self.btn_carga = tk.Button(self.frame_botones, text='Agregar review', command=self.cambio_review)
+        self.btn_carga.pack(side='top',fill='x',padx=10,pady=10)
+
         self.btn_volver = tk.Button(self.frame_botones, text='Volver', command=self.cambio_principal)
         self.btn_volver.pack(side='top',fill='x',padx=10,pady=10) 
 
-        #Muestra reviews , 
+        #Muestra reviews  
 
         self.lbl_reviews = tk.Label(self.frame_botones, text='Mira los reviews')
         self.lbl_reviews.pack(side='top',fill='x', padx=10, pady=10)

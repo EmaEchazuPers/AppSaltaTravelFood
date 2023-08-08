@@ -29,17 +29,19 @@ class VistaPrincipal(tk.Frame):
     #Posicionamiento de widgets
 
     def iniciar_widgets(self):
+
+        #Frame principal
         self.frame_principal = tk.Frame(self)
         self.frame_principal.configure(background='yellow')
         self.frame_principal.pack(side='top',fill='both',expand=True)
 
-        self.titulo = tk.Label(self.frame_principal,text='Salta Travel Food')
+        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel')
         self.titulo.pack(side='top',fill='x', padx=10, pady=10)
 
-        
         self.descripcion = tk.Label(self.frame_principal, text='Esta es la descripcion de la aplicacion', bg='red', width=60)
         self.descripcion.pack(side='left',fill='both',expand=True, padx=10,pady=10)
         
+        #Frame botones
 
         self.frame_botones = tk.Frame(self.frame_principal, background='black')
         self.frame_botones.pack(side='right',fill='both',expand=True, padx=10, pady=10)

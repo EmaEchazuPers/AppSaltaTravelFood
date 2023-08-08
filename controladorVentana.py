@@ -6,6 +6,7 @@ from vistas import vistaBusqueda as Vb
 from vistas import vistaDetalles as Vdt
 from vistas import vistaMapa as Vm
 from vistas import vistaRutaVisita as Vru
+from vistas import vistaReview as Vre
 #import de modelos
 from modelos import modeloDestino as Mds
 from modelos import modeloActividad as Mac
@@ -18,7 +19,7 @@ from modelos import modeloRuta as Mru
 class controladorVentana(tk.Tk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.title('Salta Travel Food')
+        self.title('Salta Food Travel')
         self.geometry('800x500')
         
         #Se crea un contenedor de las vistas
@@ -34,7 +35,7 @@ class controladorVentana(tk.Tk):
         #Carga las distintas vistas
 
         for f in (Vp.VistaPrincipal,Vds.VistaDestinos,Vb.VistaBusqueda,Vdt.VistaDetalles,
-                Vm.VistaMapa,Vru.VistaRutaVisita):
+                Vm.VistaMapa,Vru.VistaRutaVisita, Vre.VistaReview):
             frame = f(container, self)
             self.frames[f] = frame
             frame.grid(row=0, column=0, sticky='nsew')
@@ -96,3 +97,6 @@ class controladorVentana(tk.Tk):
                         if ubi.id_ubicacion == id_ubi:
                             lista_coordenadas.append(ubi.coordenadas)
         return lista_coordenadas
+    
+    def agregar_review():
+        pass

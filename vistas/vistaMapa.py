@@ -92,7 +92,6 @@ class VistaMapa(tk.Frame):
 
         self.actualizar_listbox()
         self.actualizar_rutas()
-        self.poner_todos_destinos()
     
     def actualizar_listbox(self):
         destinos = self.controlador.obtener_destinos()
@@ -108,6 +107,7 @@ class VistaMapa(tk.Frame):
         
     
     def ubicar_en_mapa(self,id):
+        self.mapa_widget.delete_all_path()
         ubicaciones = self.controlador.obtener_ubicaciones()
         destinos = self.controlador.obtener_destinos()
         aux_nombre=''
@@ -150,9 +150,7 @@ class VistaMapa(tk.Frame):
                 self.mapa_widget.delete_all_path()
                 self.mapa_widget.delete_all_marker()
                 self.mapa_widget.set_path(lista_coordenadas)
-        self.poner_todos_destinos()
-        
-        
+        self.poner_todos_destinos(aux_id_visita)
     
     def item_seleccionado(self,event):
         for i in self.listbox_destinos.curselection():
@@ -164,9 +162,17 @@ class VistaMapa(tk.Frame):
             self.id_item = i
         self.ubicar_ruta(self.id_item)
 
-    def poner_todos_destinos(self):
-        self.mapa_widget.delete_all_marker() 
-        for id_des in (1001,1002,1003):
+    def poner_todos_destinos(self,id_visita):
+        self.mapa_widget.delete_all_marker()
+        lista = [] 
+        if id_visita == 1301:
+            lista.append(1001)
+            lista.append(1002)
+            lista.append(1003)
+        if id_visita == 1302:
+            lista.append(1001)
+            lista.append(1002)
+        for id_des in lista:
             for ubi in self.controlador.obtener_ubicaciones():
                 if ubi.id_ubicacion == id_des-1000:
                     imagen = ImageTk.PhotoImage(Image.open('assets\\'+ self.controlador.devolver_ruta_imagen(id_des)).resize((100,100)))
