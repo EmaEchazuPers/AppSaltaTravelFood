@@ -98,5 +98,5 @@ class controladorVentana(tk.Tk):
                             lista_coordenadas.append(ubi.coordenadas)
         return lista_coordenadas
     
-    def agregar_review():
+    def agregar_review(self,aux_dicc):
         pass

@@ -11,10 +11,9 @@ class VistaReview(tk.Frame):
         self.rowconfigure(0,weight=1)
         self.columnconfigure(0,weight=1)
         self.controlador = controlador
-        self.lista_destinos = []
-        self.lista_actividades = []
-        self.lista_detalles = []
-        self.id_item = 0
+        self.nombre = tk.StringVar()
+        self.apellido = tk.StringVar()
+        self.comentario = tk.StringVar()
 
 
         self.iniciar_widgets()
@@ -39,7 +38,7 @@ class VistaReview(tk.Frame):
         self.frame_formulario = tk.Frame(self.frame_principal)
         self.frame_formulario.pack(side='left', fill='both',expand=True)
 
-        self.lbl_formulario = tk.Label(self.frame_formulario, text='Carga tu review aqui')
+        self.lbl_formulario = tk.Label(self.frame_formulario, text='Carga tu review aquí')
         self.lbl_formulario.pack(side='top', fill='x', padx=10,pady=10)
 
         #Frame nombre
@@ -47,7 +46,7 @@ class VistaReview(tk.Frame):
         self.frame_nombre = tk.Label(self.frame_formulario)
         self.frame_nombre.pack(side='top', fill='both', padx=10,pady=10)
 
-        self.lbl_nombre = tk.Label(self.frame_nombre,text='Nombre: ')
+        self.lbl_nombre = tk.Label(self.frame_nombre,text='Nombre: ',textvariable=self.nombre)
         self.lbl_nombre.pack(side='left',fill='x',padx=10,pady=10)
 
         self.txt_nombre = tk.Entry(self.frame_nombre)
@@ -58,7 +57,7 @@ class VistaReview(tk.Frame):
         self.frame_apellido = tk.Label(self.frame_formulario)
         self.frame_apellido.pack(side='top', fill='both', padx=10,pady=10)
 
-        self.lbl_apellido = tk.Label(self.frame_apellido,text='Apellido: ')
+        self.lbl_apellido = tk.Label(self.frame_apellido,text='Apellido: ',textvariable=self.apellido)
         self.lbl_apellido.pack(side='left',fill='x',padx=10,pady=10)
 
         self.txt_apellido = tk.Entry(self.frame_apellido)
@@ -69,7 +68,7 @@ class VistaReview(tk.Frame):
         self.frame_comentario = tk.Label(self.frame_formulario)
         self.frame_comentario.pack(side='top', fill='both', padx=10,pady=10)
 
-        self.lbl_comentario = tk.Label(self.frame_comentario,text='Comentario: ')
+        self.lbl_comentario = tk.Label(self.frame_comentario,text='Comentario: ',textvariable=self.comentario)
         self.lbl_comentario.pack(side='left',fill='x',padx=10,pady=10)
 
         self.txt_comentario = tk.Entry(self.frame_comentario)
@@ -104,8 +103,18 @@ class VistaReview(tk.Frame):
         self.frame_botones = tk.Frame(self.frame_principal, background='black')
         self.frame_botones.pack(side='left',fill='both',expand=True, padx=10, pady=10)
 
-        self.btn1 = tk.Button(self.frame_botones, text='Cargar')#,command=self.item_seleccionado) 
+        self.btn1 = tk.Button(self.frame_botones, text='Cargar',command=self.cargar_datos)#,command=self.item_seleccionado) 
         self.btn1.pack(side='top',fill='x',padx=10,pady=10) 
 
         self.btn2 = tk.Button(self.frame_botones, text='Volver',command=self.cambio_destino) 
         self.btn2.pack(side='top',fill='x',padx=10,pady=10) 
+    
+    def cargar_datos(self):
+        aux_nombre = self.nombre.get()
+        aux_apellido = self.nombre.get()
+        aux_comentario = self.comentario.get()
+        aux_calificacion = self.combo_calificacion.get()
+        aux_animo = self.combo_animo.get()
+        dicc_aux = { 
+        }
+        pass
