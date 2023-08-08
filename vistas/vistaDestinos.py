@@ -10,7 +10,7 @@ class VistaDestinos(tk.Frame):
     def __init__(self, master, controlador):
         #Master es: Ventana, donde estará Vista Inicio
         super().__init__(master)
-        self.configure(background='#EEEEEE')
+        self.configure(background='#900F0F')
         self.rowconfigure(0,weight=1)
         self.columnconfigure(0,weight=1)
         self.controlador = controlador
@@ -41,28 +41,30 @@ class VistaDestinos(tk.Frame):
 
         #Frame principal
 
-        self.frame_principal = tk.Frame(self)
-        self.frame_principal.configure(background='yellow')
+        self.frame_principal = tk.Frame(self,background='#1D1B1B')
         self.frame_principal.pack(side='top',fill='both',expand=True)
 
-        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel - Destinos culinarios en Salta')
+        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel - Destinos culinarios en Salta',
+        background='#900F0F',fg='#1D1B1B',font=('Roboto',18))
         self.titulo.pack(side='top',fill='x', padx=10, pady=10)
         
         #Frame de destinos
 
-        self.frame_destinos = tk.Frame(self.frame_principal)
+        self.frame_destinos = tk.Frame(self.frame_principal,background='#900F0F')
         self.frame_destinos.pack(side='left', fill='both',expand=True, padx=10, pady=10)
 
-        self.lbl_destinos = tk.Label(self.frame_destinos,text='Lista de destinos disponibles')
+        self.lbl_destinos = tk.Label(self.frame_destinos,text='Lista de destinos disponibles',
+        background='#900F0F',fg='#1D1B1B',font=('Roboto',13))
         self.lbl_destinos.pack(side='top',fill='x',padx=10,pady=10)
 
-        self.listbox_destinos = tk.Listbox(self.frame_destinos,justify='center')
+        self.listbox_destinos = tk.Listbox(self.frame_destinos,justify='center',background='#1D1B1B',
+        fg='#900F0F', font=('Roboto'))
         self.listbox_destinos.pack(side='top',fill='both',expand=True, padx=10,pady=10)
         self.listbox_destinos.insert(tk.END,self.lista_destinos)
 
         #Frame de botones
 
-        self.frame_botones = tk.Frame(self.frame_principal, background='black')
+        self.frame_botones = tk.Frame(self.frame_principal, background='#900F0F')
         self.frame_botones.pack(side='left',fill='both',expand=True, padx=10, pady=10)
 
         self.btn_detalles = tk.Button(self.frame_botones, text='Ver detalles', command=self.cambio_detalles)
@@ -82,10 +84,12 @@ class VistaDestinos(tk.Frame):
 
         #Muestra reviews  
 
-        self.lbl_reviews = tk.Label(self.frame_botones, text='Mira los reviews')
+        self.lbl_reviews = tk.Label(self.frame_botones, text='Mira los reviews',
+            background='#900F0F',fg='#1D1B1B',font=('Roboto',13))
         self.lbl_reviews.pack(side='top',fill='x', padx=10, pady=10)
 
-        self.listbox_reviews = tk.Listbox(self.frame_botones, justify='left')
+        self.listbox_reviews = tk.Listbox(self.frame_botones, justify='left',background='#1D1B1B',
+        fg='#900F0F', font=('Roboto',10))
         self.listbox_reviews.pack(side='top',fill='both', expand=True, padx=10, pady=10)
         self.listbox_reviews.insert(tk.END,self.lista_reviews)
 

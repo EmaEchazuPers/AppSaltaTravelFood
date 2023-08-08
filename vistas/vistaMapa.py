@@ -3,14 +3,14 @@ from PIL import Image, ImageTk
 import tkintermapview as tkmp
 from vistas import vistaDestinos as Vds
 from vistas import vistaDetalles as Vdt
-from vistas import vistaRutaVisita as Vru
+
 
 
 class VistaMapa(tk.Frame):
     def __init__(self, master, controlador):
         #Master es: Ventana, donde estará Vista Inicio
         super().__init__(master)
-        self.configure(background='#EEEEEE')
+        self.configure(background='#900F0F')
         self.rowconfigure(0,weight=1)
         self.columnconfigure(0,weight=1)
         self.controlador = controlador
@@ -26,52 +26,53 @@ class VistaMapa(tk.Frame):
     def cambio_destino(self):
         self.controlador.mostrar_frame(Vds.VistaDestinos)
     
-    def cambio_visitas(self):
-        self.controlador.mostrar_frame(Vru.VistaRutaVisita)
-
-    
     #Posicionamiento de widgets
 
     def iniciar_widgets(self):
 
         #Frame principal
 
-        self.frame_principal = tk.Frame(self)
-        self.frame_principal.configure(background='yellow')
+        self.frame_principal = tk.Frame(self,background='#1D1B1B')
         self.frame_principal.pack(side='top',fill='both',expand=True)
 
-        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel - Mapa de destinos en Salta')
+        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel - Mapa de destinos en Salta',
+        background='#900F0F',fg='#1D1B1B',font=('Roboto',18))
         self.titulo.pack(side='top',fill='x', padx=10, pady=10)
 
         #Frame destinos
 
-        self.frame_destinos = tk.Frame(self.frame_principal)
-        self.frame_destinos.pack(side='left', fill='both',expand=True)
+        self.frame_destinos = tk.Frame(self.frame_principal,background='#900F0F')
+        self.frame_destinos.pack(side='left', fill='both',expand=True,padx=10, pady=10)
 
-        self.lbl_destinos = tk.Label(self.frame_destinos, text='Lista de destinos')
+        self.lbl_destinos = tk.Label(self.frame_destinos, text='Lista de destinos',
+        background='#1D1B1B',fg='#900F0F',font=('Roboto',18))
         self.lbl_destinos.pack(side='top', fill='x', padx=10,pady=10)
 
-        self.listbox_destinos = tk.Listbox(self.frame_destinos,justify='center')
+        self.listbox_destinos = tk.Listbox(self.frame_destinos,justify='center',
+        background='#1D1B1B', fg='#900F0F', font=('Roboto'))
         self.listbox_destinos.pack(side='top',fill='both',expand=True, padx=10,pady=10)
         self.listbox_destinos.bind('<Button-1>',self.item_seleccionado)
         self.listbox_destinos.insert(tk.END,self.lista_destinos)
 
         #Frame rutas
 
-        self.lbl_rutas = tk.Label(self.frame_destinos, text='Lista de rutas')
+        self.lbl_rutas = tk.Label(self.frame_destinos, text='Lista de rutas',background='#1D1B1B',
+        fg='#900F0F', font=('Roboto'))
         self.lbl_rutas.pack(side='top', fill='x', padx=10,pady=10)
 
-        self.listbox_rutas = tk.Listbox(self.frame_destinos,justify='center')
+        self.listbox_rutas = tk.Listbox(self.frame_destinos,justify='center',background='#1D1B1B',
+        fg='#900F0F', font=('Roboto',12))
         self.listbox_rutas.pack(side='top',fill='both',expand=True, padx=10,pady=10)
         self.listbox_rutas.bind('<Button-1>',self.item_seleccionado_ruta)
         self.listbox_rutas.insert(tk.END,self.lista_rutas)
 
         #Frame mapa
 
-        self.frame_mapa = tk.Frame(self.frame_principal)
-        self.frame_mapa.pack(side='left', fill='both',expand=True)
+        self.frame_mapa = tk.Frame(self.frame_principal,background='#900F0F')
+        self.frame_mapa.pack(side='left', fill='both',expand=True,padx=10, pady=10)
 
-        self.lbl_mapa = tk.Label(self.frame_mapa, text='Destino en mapa')
+        self.lbl_mapa = tk.Label(self.frame_mapa, text='Destino en mapa',
+        background='#1D1B1B',fg='#900F0F',font=('Roboto',12))
         self.lbl_mapa.pack(side='top', fill='x', padx=10,pady=10)
 
         self.mapa_widget = tkmp.TkinterMapView(self.frame_mapa)
@@ -81,11 +82,8 @@ class VistaMapa(tk.Frame):
 
         #Frame botones
 
-        self.frame_botones = tk.Frame(self.frame_principal, background='black')
+        self.frame_botones = tk.Frame(self.frame_principal, background='#900F0F')
         self.frame_botones.pack(side='left',fill='both',expand=True, padx=10, pady=10)
-
-        self.btn_visitas = tk.Button(self.frame_botones, text='Ver rutas', command=self.cambio_visitas)
-        self.btn_visitas.pack(side='top',fill='x',padx=10,pady=10)
 
         self.btn_volver = tk.Button(self.frame_botones, text='Volver', command=self.cambio_destino)
         self.btn_volver.pack(side='top',fill='x',padx=10,pady=10)

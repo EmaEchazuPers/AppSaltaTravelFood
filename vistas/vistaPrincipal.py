@@ -32,19 +32,27 @@ class VistaPrincipal(tk.Frame):
 
         #Frame principal
         self.frame_principal = tk.Frame(self)
-        self.frame_principal.configure(background='yellow')
+        self.frame_principal.configure(background='#1D1B1B')
         self.frame_principal.pack(side='top',fill='both',expand=True)
 
-        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel')
+        self.titulo = tk.Label(self.frame_principal,text='Salta Food Travel',background='#900F0F',fg='#1D1B1B',font=('Roboto',18))
         self.titulo.pack(side='top',fill='x', padx=10, pady=10)
 
-        self.descripcion = tk.Label(self.frame_principal, text='Esta es la descripcion de la aplicacion', bg='red', width=60)
-        self.descripcion.pack(side='left',fill='both',expand=True, padx=10,pady=10)
+        self.frame_descripcion = tk.Frame(self.frame_principal,background='#900F0F')
+        self.frame_descripcion.pack(side='left',fill='both',expand=True,padx=10,pady=10)
+
+        self.descripcion = tk.Label(self.frame_descripcion,text='Los mejores destinos culinarios de Salta en una App', width=60
+        ,background='#900F0F',fg='#1D1B1B',font=('Roboto',13))
+        self.descripcion.pack(side='top',fill='x',expand=True, padx=10,pady=10)
+
+        self.imagen = ImageTk.PhotoImage(Image.open('assets\\monumento_guemes.png').resize((400,300)))
+        self.lbl_imagen = tk.Label(self.frame_descripcion, image=self.imagen,background='#1D1B1B')
+        self.lbl_imagen.pack(side='top',fill='both',expand=True,padx=10, pady=10)
         
         #Frame botones
 
-        self.frame_botones = tk.Frame(self.frame_principal, background='black')
-        self.frame_botones.pack(side='right',fill='both',expand=True, padx=10, pady=10)
+        self.frame_botones = tk.Frame(self.frame_principal, background='#900F0F')
+        self.frame_botones.pack(side='left',fill='both',expand=True, padx=10, pady=10)
         
         self.btn1 = tk.Button(self.frame_botones, text='Ver Destinos',command=self.cambio_destino, justify='center') 
         self.btn1.pack(side='top',fill='x',padx=10,pady=10) 

@@ -6,7 +6,7 @@ class VistaDetalles(tk.Frame):
     def __init__(self, master, controlador):
 
         super().__init__(master)
-        self.configure(background='#EEEEEE')
+        self.configure(background='#900F0F')
         self.rowconfigure(0,weight=1)
         self.columnconfigure(0,weight=1)
         self.controlador = controlador
@@ -26,52 +26,58 @@ class VistaDetalles(tk.Frame):
 
         #Frame principal
 
-        self.frame_principal = tk.Frame(self)
-        self.frame_principal.configure(background='yellow')
+        self.frame_principal = tk.Frame(self,background='#1D1B1B')
         self.frame_principal.pack(side='top',fill='both',expand=True)
 
-        self.titulo = tk.Label(self.frame_principal,text='Detalles de los destinos culinarios')
+        self.titulo = tk.Label(self.frame_principal,text='Detalles de los destinos culinarios',
+        background='#900F0F',fg='#1D1B1B',font=('Roboto',18))
         self.titulo.pack(side='top',fill='x', padx=10, pady=10)
 
         #Frame destinos
 
-        self.frame_destinos = tk.Frame(self.frame_principal)
-        self.frame_destinos.pack(side='left', fill='both',expand=True)
+        self.frame_destinos = tk.Frame(self.frame_principal,background='#900F0F')
+        self.frame_destinos.pack(side='left', fill='both',expand=True, padx=10, pady=10)
 
-        self.lbl_destinos = tk.Label(self.frame_destinos, text='Lista de destinos')
-        self.lbl_destinos.pack(side='top', fill='x', padx=10,pady=10)
+        self.lbl_destinos = tk.Label(self.frame_destinos,text='Lista de destinos disponibles',
+        background='#1D1B1B',fg='#900F0F',font=('Roboto',13))
+        self.lbl_destinos.pack(side='top',fill='x',padx=10,pady=10)
 
-        self.listbox_destinos = tk.Listbox(self.frame_destinos,justify='center')
+        self.listbox_destinos = tk.Listbox(self.frame_destinos,justify='center',background='#1D1B1B',
+        fg='#900F0F', font=('Roboto'))
         self.listbox_destinos.pack(side='top',fill='both',expand=True, padx=10,pady=10)
         self.listbox_destinos.insert(tk.END,self.lista_destinos)
 
         #Frame detalles
 
-        self.frame_detalles = tk.Frame(self.frame_principal)
-        self.frame_detalles.pack(side='left', fill='both',expand=True)
+        self.frame_detalles = tk.Frame(self.frame_principal,background='#900F0F')
+        self.frame_detalles.pack(side='left', fill='both',expand=True,padx=10,pady=10)
 
-        self.lbl_detalles = tk.Label(self.frame_detalles, text='Detalles del destino')
+        self.lbl_detalles = tk.Label(self.frame_detalles, text='Detalles del destino',
+        background='#1D1B1B',fg='#900F0F',font=('Roboto',13))
         self.lbl_detalles.pack(side='top', fill='x', padx=10,pady=10)
 
-        self.listbox_detalles = tk.Listbox(self.frame_detalles, justify='center')
+        self.listbox_detalles = tk.Listbox(self.frame_detalles, justify='center',background='#1D1B1B',
+        fg='#900F0F', font=('Roboto',10))
         self.listbox_detalles.pack(side='top',fill='both',expand=True,padx=10,pady=10)
         self.listbox_detalles.insert(tk.END,self.lista_detalles)
 
         #Frame actividades
 
-        self.frame_actividades = tk.Frame(self.frame_principal)
-        self.frame_actividades.pack(side='left', fill='both',expand=True)
+        self.frame_actividades = tk.Frame(self.frame_principal,background='#900F0F')
+        self.frame_actividades.pack(side='left', fill='both',expand=True,padx=10,pady=10)
 
-        self.lbl_actividades = tk.Label(self.frame_actividades, text='Lista de actividades')
+        self.lbl_actividades = tk.Label(self.frame_actividades, text='Lista de actividades',
+        background='#1D1B1B',fg='#900F0F',font=('Roboto',13))
         self.lbl_actividades.pack(side='top', fill='x', padx=10,pady=10)
         
-        self.listbox_actividades = tk.Listbox(self.frame_actividades,justify='center')
+        self.listbox_actividades = tk.Listbox(self.frame_actividades,justify='center',background='#1D1B1B',
+        fg='#900F0F', font=('Roboto',10))
         self.listbox_actividades.pack(side='top',fill='both',expand=True, padx=10,pady=10)
         self.listbox_actividades.insert(tk.END,self.lista_actividades)
 
         #Frame botones
 
-        self.frame_botones = tk.Frame(self.frame_principal, background='black')
+        self.frame_botones = tk.Frame(self.frame_principal, background='#900F0F')
         self.frame_botones.pack(side='left',fill='both',expand=True, padx=10, pady=10)
 
         self.btn1 = tk.Button(self.frame_botones, text='Seleccionar',command=self.item_seleccionado) 
