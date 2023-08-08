@@ -1,15 +1,1 @@
-[
-    {
-        "id_usuario" : 1101,
-        "nombre" : "Emanuel",
-        "apellido" : "Echazu",
-        "historial_rutas" : [1301,1302]
-    },
-
-    {
-        "id_usuario" : 1102,
-        "nombre" : "Juan",
-        "apellido" : "Perez",
-        "historial_rutas" : [1302]
-    }
-]
+[{"id_usuario": 1101, "nombre": "Emanuel", "apellido": "Echazu", "historial_rutas": [1301, 1302]}, {"id_usuario": 1102, "nombre": "Juan", "apellido": "Perez", "historial_rutas": [1302]}, {"id_usuario": 1103, "nombre": "Monica", "apellido": "Lopez", "historial_rutas": []}, {"id_usuario": 1104, "nombre": "Lucia", "apellido": "Fernandez", "historial_rutas": []}, {"id_usuario": 1105, "nombre": "Ramon", "apellido": "Balcarce", "historial_rutas": []}]
