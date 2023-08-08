@@ -5,7 +5,6 @@ from vistas import vistaDestinos as Vds
 from vistas import vistaBusqueda as Vb
 from vistas import vistaDetalles as Vdt
 from vistas import vistaMapa as Vm
-from vistas import vistaRutaVisita as Vru
 from vistas import vistaReview as Vre
 #import de modelos
 from modelos import modeloDestino as Mds
@@ -35,7 +34,7 @@ class controladorVentana(tk.Tk):
         #Carga las distintas vistas
 
         for f in (Vp.VistaPrincipal,Vds.VistaDestinos,Vb.VistaBusqueda,Vdt.VistaDetalles,
-                Vm.VistaMapa,Vru.VistaRutaVisita, Vre.VistaReview):
+                Vm.VistaMapa, Vre.VistaReview):
             frame = f(container, self)
             self.frames[f] = frame
             frame.grid(row=0, column=0, sticky='nsew')
@@ -98,5 +97,11 @@ class controladorVentana(tk.Tk):
                             lista_coordenadas.append(ubi.coordenadas)
         return lista_coordenadas
     
-    def agregar_review(self,aux_dicc):
-        pass
+    def carga_datos_usuario(self, dicc_usuario):   
+        Mu.ModeloUsuario.escribir_json(dicc_usuario,'data\\usuarios.json')
+    
+    def carga_datos_reviews(self, dicc_review):   
+        Mr.ModeloReview.escribir_json(dicc_review,'data\\reviews.json')
+
+        
+        
